@@ -46,7 +46,7 @@ Follow these steps to set up and run the API locally:
 4. Start the server:
 
     ```
-    npm start
+    node server.js
     ```
 
 ## API Endpoints
