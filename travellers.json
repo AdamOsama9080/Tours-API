@@ -1,0 +1,605 @@
+[
+    {
+        "reviews": [],
+        "title": "Aswan Dam Adventure",
+        "location": "Aswan, Egypt",
+        "destination": "Aswan Dam, Egypt",
+        "rating": 4.8,
+        "description": "Embark on an exciting adventure to explore the iconic Aswan Dam and its surroundings.",
+        "price": 200,
+        "startDate": "2024-06-15",
+        "endDate": "2024-06-19",
+        "startTime": "10:00 AM",
+        "endTime": "02:00 PM",
+        "duration": "5 days",
+        "images": [
+            "https://i.pinimg.com/236x/8b/7d/25/8b7d25532bdeea4b0e56c169ea1e21f9.jpg",
+            "https://i.pinimg.com/236x/e1/dc/2b/e1dc2b8e2281b5242690a02a7136fa44.jpg",
+            "https://i.pinimg.com/236x/36/8f/87/368f87ad9f9c811a395dfaa5797ba031.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/8b/7d/25/8b7d25532bdeea4b0e56c169ea1e21f9.jpg",
+        "type": "Adventure",
+        "limitNumberOfTravelers": 30,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 20
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 10
+            }
+        ],
+        "totalTravelers": 30,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Aswan Dam",
+            "Philae Temple",
+            "Nubian Village"
+        ],
+        "details": "Embark on thrilling excursions around the majestic Aswan Dam and its historical sites.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore Aswan Dam",
+            "Visit Philae Temple",
+            "Discover Nubian Village"
+        ],
+        "latitude": 24.0889,
+        "longitude": 32.8998
+    },
+    {
+        "reviews": [],
+        "title": "Alexandria Discovery",
+        "location": "Alexandria, Egypt",
+        "destination": "Bibliotheca Alexandrina, Egypt",
+        "rating": 4.8,
+        "description": "Embark on an enriching journey to discover the cultural treasures of Alexandria, including the renowned Bibliotheca Alexandrina.",
+        "price": 200,
+        "startDate": "2024-09-10",
+        "endDate": "2024-09-17",
+        "startTime": "09:00 AM",
+        "endTime": "04:00 PM",
+        "duration": "7 days",
+        "images": [
+            "https://i.pinimg.com/236x/e5/4a/5c/e54a5c68178c80bd4f61e0882ce9dffa.jpg",
+            "https://i.pinimg.com/236x/c7/e5/ba/c7e5bafe43f21b657a053b3056f8f24c.jpg",
+            "https://i.pinimg.com/236x/28/b5/f8/28b5f86c1692b87fe87465b3948111c6.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/e5/4a/5c/e54a5c68178c80bd4f61e0882ce9dffa.jpg",
+        "type": "Discovery",
+        "limitNumberOfTravelers": 30,
+        "touristReservations": [
+            {
+                "userId": "135792",
+                "numberOfTravelers": 20
+            },
+            {
+                "userId": "246810",
+                "numberOfTravelers": 10
+            }
+        ],
+        "totalTravelers": 30,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Bibliotheca Alexandrina",
+            "Citadel of Qaitbay",
+            "Montaza Palace"
+        ],
+        "details": "Embark on a comprehensive exploration of Alexandria's cultural landmarks, including the magnificent Bibliotheca Alexandrina.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore Bibliotheca Alexandrina",
+            "Visit Citadel of Qaitbay",
+            "Discover Montaza Palace"
+        ],
+        "latitude": 31.2001,
+        "longitude": 29.9187
+    },
+    {
+        "reviews": [],
+        "title": "Red Sea Adventure",
+        "location": "Sharm El Sheikh, Egypt",
+        "destination": "Ras Mohammed National Park, Egypt",
+        "rating": 4.8,
+        "description": "Embark on an exhilarating adventure to explore the stunning underwater world of Ras Mohammed National Park in the Red Sea.",
+        "price": 200,
+        "startDate": "2024-07-20",
+        "endDate": "2024-07-23",
+        "startTime": "08:00 AM",
+        "endTime": "05:00 PM",
+        "duration": "3 days",
+        "images": [
+            "https://i.pinimg.com/236x/fb/1e/84/fb1e84e205778f2afd4766e6adbcc2be.jpg",
+            "https://i.pinimg.com/474x/35/61/ff/3561ffcc38ab6a96ebcd3ba84b8e5065.jpg",
+            "https://i.pinimg.com/236x/bf/2c/02/bf2c028398ec22ec448bdb9171235e75.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/fb/1e/84/fb1e84e205778f2afd4766e6adbcc2be.jpg",
+        "type": "Adventure",
+        "limitNumberOfTravelers": 25,
+        "touristReservations": [
+            {
+                "userId": "987654",
+                "numberOfTravelers": 15
+            },
+            {
+                "userId": "567890",
+                "numberOfTravelers": 10
+            }
+        ],
+        "totalTravelers": 25,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Ras Mohammed National Park",
+            "Sharm El Sheikh Beach",
+            "Naama Bay"
+        ],
+        "details": "Embark on an unforgettable adventure to explore the vibrant marine life of Ras Mohammed National Park in the Red Sea.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore Ras Mohammed National Park",
+            "Relax at Sharm El Sheikh Beach",
+            "Visit Naama Bay"
+        ],
+        "latitude": 27.9158,
+        "longitude": 34.3297
+    },
+    {
+        "reviews": [],
+        "title": "Dahab Diving Experience",
+        "location": "Dahab, Egypt",
+        "destination": "Blue Hole, Egypt",
+        "rating": 4.8,
+        "description": "Embark on an unforgettable diving experience in the crystal-clear waters of the Blue Hole in Dahab.",
+        "price": 200,
+        "startDate": "2024-11-05",
+        "endDate": "2024-11-07",
+        "startTime": "09:00 AM",
+        "endTime": "03:00 PM",
+        "duration": "2 days",
+        "images": [
+            "https://i.pinimg.com/236x/e5/78/c7/e578c7123da629e0a94b913c1f5ef86a.jpg",
+            "https://i.pinimg.com/236x/23/81/e3/2381e3d1aff2fa3b19d4203e65ecd94f.jpg",
+            "https://i.pinimg.com/236x/12/16/dd/1216dd8c2c17c1154c1224dcf44e3799.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/e5/78/c7/e578c7123da629e0a94b913c1f5ef86a.jpg",
+        "type": "Diving",
+        "limitNumberOfTravelers": 15,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 10
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 5
+            }
+        ],
+        "totalTravelers": 15,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Blue Hole",
+            "Coral Garden",
+            "Lighthouse Reef"
+        ],
+        "details": "Explore the stunning underwater world of the Blue Hole in Dahab and discover vibrant coral reefs and marine life.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Diving equipment"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Dive at Blue Hole",
+            "Explore Coral Garden",
+            "Visit Lighthouse Reef"
+        ],
+        "latitude": 28.5095,
+        "longitude": 34.5155
+    },
+    {
+        "reviews": [],
+        "title": "Siwa Oasis Retreat",
+        "location": "Siwa Oasis, Egypt",
+        "destination": "Cleopatra's Bath, Egypt",
+        "rating": 4.8,
+        "description": "Indulge in a serene retreat amidst the picturesque landscapes of Siwa Oasis and visit the legendary Cleopatra's Bath.",
+        "price": 200,
+        "startDate": "2024-12-10",
+        "endDate": "2024-12-12",
+        "startTime": "10:00 AM",
+        "endTime": "04:00 PM",
+        "duration": "2 days",
+        "images": [
+            "https://i.pinimg.com/236x/81/e9/fb/81e9fb355f32c0e331cd94b9ecd02dd8.jpg",
+            "https://i.pinimg.com/236x/41/a1/7c/41a17c3bfa2819a2c4e191667c00434f.jpg",
+            "https://i.pinimg.com/236x/17/f0/a4/17f0a4e9c7cc1805180c9d0743ce8755.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/81/e9/fb/81e9fb355f32c0e331cd94b9ecd02dd8.jpg",
+        "type": "Retreat",
+        "limitNumberOfTravelers": 15,
+        "touristReservations": [
+            {
+                "userId": "135792",
+                "numberOfTravelers": 10
+            },
+            {
+                "userId": "246810",
+                "numberOfTravelers": 5
+            }
+        ],
+        "totalTravelers": 15,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Cleopatra's Bath",
+            "Temple of the Oracle",
+            "Great Sand Sea"
+        ],
+        "details": "Experience tranquility in the heart of nature at Siwa Oasis and discover the mystical allure of Cleopatra's Bath.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Visit Cleopatra's Bath",
+            "Explore Temple of the Oracle",
+            "Venture into the Great Sand Sea"
+        ],
+        "latitude": 29.2036,
+        "longitude": 25.5198
+    },
+    {
+        "reviews": [],
+        "title": "Luxor Heritage Tour",
+        "location": "Luxor, Egypt",
+        "destination": "Hatshepsut Temple, Egypt",
+        "rating": 4.8,
+        "description": "Embark on a heritage tour to Luxor and explore the ancient wonders, including the magnificent Hatshepsut Temple.",
+        "price": 200,
+        "startDate": "2024-08-25",
+        "endDate": "2024-08-28",
+        "startTime": "09:00 AM",
+        "endTime": "03:00 PM",
+        "duration": "3 days",
+        "images": [
+            "https://i.pinimg.com/236x/e7/26/06/e726061b008e66f92d5373d687a20443.jpg",
+            "https://i.pinimg.com/236x/6f/88/85/6f88859bf9b1cee28c32672f8472b98f.jpg",
+            "https://i.pinimg.com/236x/ac/b4/b0/acb4b0df15f091eb67fbb9c0b5699ae7.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/e7/26/06/e726061b008e66f92d5373d687a20443.jpg",
+        "type": "Heritage Tour",
+        "limitNumberOfTravelers": 20,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 15
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 5
+            }
+        ],
+        "totalTravelers": 20,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Hatshepsut Temple",
+            "Karnak Temple",
+            "Valley of the Kings"
+        ],
+        "details": "Immerse yourself in the rich heritage of Luxor as you visit iconic sites like the majestic Hatshepsut Temple and the grand Karnak Temple.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore Hatshepsut Temple",
+            "Visit Karnak Temple",
+            "Discover Valley of the Kings"
+        ],
+        "latitude": 25.6872,
+        "longitude": 32.6396
+    },
+    {
+        "reviews": [],
+        "title": "Red Sea Diving Expedition",
+        "location": "Sharm El Sheikh, Egypt",
+        "rating": 4.6,
+        "description": "Discover the vibrant marine life of the Red Sea with a diving expedition.",
+        "price": 150,
+        "startDate": "2024-06-01T00:00:00.000Z",
+        "endDate": "2024-06-05T00:00:00.000Z",
+        "startTime": "08:00 AM",
+        "endTime": "01:00 PM",
+        "duration": "5 days",
+        "images": [
+            "https://i.pinimg.com/236x/e8/47/e7/e847e7309fd630003e88ea1de5d7a9ea.jpg",
+            "https://i.pinimg.com/236x/5c/c6/f5/5cc6f5ecf1ec156d7189f2c9c343bbc3.jpg",
+            "https://i.pinimg.com/236x/40/51/61/4051611e8565416cf8c707b039e378f8.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/e8/47/e7/e847e7309fd630003e88ea1de5d7a9ea.jpg",
+        "type": "Adventure",
+        "groupSize": 15,
+        "highlights": [
+            "Coral reefs",
+            "Shipwrecks",
+            "Dolphin encounters"
+        ],
+        "details": "Dive into crystal-clear waters and explore stunning coral reefs and underwater landscapes.",
+        "included": [
+            "Diving equipment",
+            "Accommodation",
+            "Meals"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Dive at Ras Mohammed National Park",
+            "Explore the SS Thistlegorm wreck",
+            "Swim with dolphins"
+        ],
+        "latitude": 27.9158,
+        "longitude": 34.3294
+    },
+    {
+        "reviews": [],
+        "title": "Luxor Hot Air Balloon Ride",
+        "location": "Luxor, Egypt",
+        "destination": "Valley of the Kings, Egypt",
+        "rating": 4.7,
+        "description": "Experience the breathtaking beauty of Luxor from a hot air balloon as you soar over the iconic Valley of the Kings.",
+        "price": 150,
+        "startDate": "2024-12-10",
+        "endDate": "2024-12-12",
+        "startTime": "05:00 AM",
+        "endTime": "08:00 AM",
+        "duration": "2 days",
+        "images": [
+            "https://i.pinimg.com/236x/a9/16/2e/a9162e8c24fee3b7861290ad181f5148.jpg",
+            "https://i.pinimg.com/236x/34/c7/94/34c794160244f0351563ccc825e5b44f.jpg",
+            "https://i.pinimg.com/236x/83/dc/58/83dc581c5df1c67e68b69a141e1c734e.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/a9/16/2e/a9162e8c24fee3b7861290ad181f5148.jpg",
+        "type": "Adventure",
+        "limitNumberOfTravelers": 20,
+        "touristReservations": [
+            {
+                "userId": "987654",
+                "numberOfTravelers": 15
+            },
+            {
+                "userId": "567890",
+                "numberOfTravelers": 5
+            }
+        ],
+        "totalTravelers": 20,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Valley of the Kings",
+            "Temple of Hatshepsut",
+            "Colossi of Memnon"
+        ],
+        "details": "Enjoy a serene and magical journey as you glide over ancient monuments and breathtaking landscapes in Luxor.",
+        "included": [
+            "Hot air balloon ride",
+            "Accommodation",
+            "Meals"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Take a hot air balloon ride over Luxor",
+            "Visit the Valley of the Kings",
+            "Explore the Temple of Hatshepsut"
+        ],
+        "latitude": 25.6872,
+        "longitude": 32.6396
+    },
+    {
+        "reviews": [],
+        "title": "Aswan Felucca Cruise",
+        "location": "Aswan, Egypt",
+        "destination": "Philae Temple, Egypt",
+        "rating": 4.9,
+        "description": "Sail along the tranquil waters of the Nile River on a traditional felucca and discover the beauty of Aswan.",
+        "price": 100,
+        "startDate": "2024-10-15",
+        "endDate": "2024-10-17",
+        "startTime": "09:00 AM",
+        "endTime": "05:00 PM",
+        "duration": "3 days",
+        "images": [
+            "https://i.pinimg.com/236x/6c/6f/09/6c6f098da5617f18df50e7e08fcbbde9.jpg",
+            "https://i.pinimg.com/736x/10/c2/70/10c2709f59ddd577a51c2a9ce6e4a98b.jpghttps://i.pinimg.com/236x/c5/f8/80/c5f880ef43ecfe3e6ad552a95a33848e.jpg",
+            "https://i.pinimg.com/236x/f5/f7/24/f5f724aa43c032a6bec15215b0689f21.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/6c/6f/09/6c6f098da5617f18df50e7e08fcbbde9.jpg",
+        "type": "Cruise",
+        "limitNumberOfTravelers": 10,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 5
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 5
+            }
+        ],
+        "totalTravelers": 10,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Philae Temple",
+            "Nubian Village",
+            "Botanical Garden"
+        ],
+        "details": "Experience the charm of Aswan as you sail on a traditional felucca, visit historic landmarks, and immerse yourself in local culture.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Sail on a felucca along the Nile",
+            "Explore Philae Temple",
+            "Visit a Nubian Village"
+        ],
+        "latitude": 24.0889,
+        "longitude": 32.8998
+    },
+    {
+        "reviews": [],
+        "title": "Siwa Oasis Desert Safari",
+        "location": "Siwa Oasis, Egypt",
+        "destination": "Great Sand Sea, Egypt",
+        "rating": 4.7,
+        "description": "Embark on an exhilarating desert safari through the stunning landscapes of the Siwa Oasis.",
+        "price": 250,
+        "startDate": "2024-09-20",
+        "endDate": "2024-09-24",
+        "startTime": "07:00 AM",
+        "endTime": "04:00 PM",
+        "duration": "5 days",
+        "images": [
+            "https://i.pinimg.com/236x/cc/0b/4a/cc0b4a41cd22c58d15edbfef2e9dcd6a.jpg",
+            "https://i.pinimg.com/236x/3d/b2/b7/3db2b784629b064f9f63fa648bd17581.jpg",
+            "https://i.pinimg.com/236x/64/a1/ef/64a1ef45acd6e6d9be535ce63692a7b1.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/cc/0b/4a/cc0b4a41cd22c58d15edbfef2e9dcd6a.jpg",
+        "type": "Safari",
+        "limitNumberOfTravelers": 8,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 4
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 4
+            }
+        ],
+        "totalTravelers": 8,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Great Sand Sea",
+            "Cleopatra's Bath",
+            "Mountain of the Dead"
+        ],
+        "details": "Experience the thrill of exploring the vast desert landscapes of the Siwa Oasis, including natural springs, ancient ruins, and towering sand dunes.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided desert safari"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore the Great Sand Sea",
+            "Visit Cleopatra's Bath",
+            "Discover the Mountain of the Dead"
+        ],
+        "latitude": 29.2039,
+        "longitude": 25.5198
+    },
+    {
+        "reviews": [],
+        "title": "Cairo City Tour",
+        "location": "Cairo, Egypt",
+        "destination": "Giza Pyramids, Egypt",
+        "rating": 4.6,
+        "description": "Discover the ancient wonders of Cairo, including the iconic Giza Pyramids.",
+        "price": 80,
+        "startDate": "2024-07-10",
+        "endDate": "2024-07-12",
+        "startTime": "08:00 AM",
+        "endTime": "04:00 PM",
+        "duration": "3 days",
+        "images": [
+            "https://i.pinimg.com/236x/8d/66/e8/8d66e8b8a6fca9af1dc8549b5b7e3861.jpg",
+            "https://i.pinimg.com/236x/bc/98/c5/bc98c51483454b9cf121cbad62e500ff.jpg",
+            "https://i.pinimg.com/236x/5f/50/36/5f5036944f8be7f31e0fd319fc5bec05.jpg"
+        ],
+        "mainImage": "https://i.pinimg.com/236x/8d/66/e8/8d66e8b8a6fca9af1dc8549b5b7e3861.jpg",
+        "type": "City Tour",
+        "limitNumberOfTravelers": 12,
+        "touristReservations": [
+            {
+                "userId": "123456",
+                "numberOfTravelers": 8
+            },
+            {
+                "userId": "654321",
+                "numberOfTravelers": 4
+            }
+        ],
+        "totalTravelers": 12,
+        "emptyPlaces": 0,
+        "highlights": [
+            "Giza Pyramids",
+            "Egyptian Museum",
+            "Khan El Khalili Bazaar"
+        ],
+        "details": "Immerse yourself in the rich history and culture of Cairo as you visit iconic landmarks and explore vibrant markets.",
+        "included": [
+            "Accommodation",
+            "Meals",
+            "Guided tours"
+        ],
+        "excluded": [
+            "Tips",
+            "Personal expenses"
+        ],
+        "program": [
+            "Explore the Giza Pyramids",
+            "Visit the Egyptian Museum",
+            "Shop at Khan El Khalili Bazaar"
+        ],
+        "latitude": 30.0444,
+        "longitude": 31.2357
+    }
+]
