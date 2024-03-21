@@ -30,7 +30,7 @@ Follow these steps to set up and run the API locally:
 1. Clone the repository:
 
     ```
-    git clone <repository_url>
+    git clone https://github.com/AdamOsama9080/Tours-API-
     ```
 
 2. Install dependencies:
