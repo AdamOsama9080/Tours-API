@@ -25,8 +25,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/Trolli', {
-// mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+// mongoose.connect('mongodb://localhost:27017/Trolli', {
+mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Trolli', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -42,7 +42,7 @@ app.use("/favourits", favouritRouters);
 app.use('/send', subscribeRoutes);
 app.use('/sendmail', sendEmail);
 // Start server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
