@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // mongoose.connect('mongodb://localhost:27017/Tour', {
-  mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.84zssma.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
