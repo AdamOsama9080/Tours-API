@@ -5,10 +5,15 @@ const sendSubscriptionEmail = async (req, res) => {
     try {
         const { senderEmail } = req.body; 
 
+        const existingSubscription = await Subscription.findOne({ senderEmail });
+
+        if (existingSubscription) {
+            return res.status(400).json({ status: 'error', message: 'You are already subscribed' });
+        }
+
         const subscription = new Subscription({ senderEmail });
         await subscription.save();
 
-        // Create a transporter
         const transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: {
@@ -20,7 +25,6 @@ const sendSubscriptionEmail = async (req, res) => {
             }
         });
 
-        // Email content
         const subject = 'Thank You for Subscribing';
         const htmlMessage = `
             <p>Dear Subscriber,</p>

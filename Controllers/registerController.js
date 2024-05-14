@@ -1,8 +1,9 @@
-// registerController.js
 const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 const nodemailer = require('nodemailer');
 const RegisterUser = require('../Model/registerModel');
+const fs = require('fs'); 
+const path = require('path');
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -100,3 +101,56 @@ exports.verifyOTP = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const { email, firstName, lastName, gender, phone } = req.body;
+
+        const user = await RegisterUser.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        if (firstName) user.firstName = firstName;
+        if (lastName) user.lastName = lastName;
+        if (gender) user.gender = gender;
+        if (phone) user.phone = phone;
+
+        if (req.file) {
+            const profilePicture = {
+                data: fs.readFileSync(req.file.path),
+                contentType: req.file.mimetype
+            };
+            user.profilePicture = profilePicture;
+            fs.unlinkSync(req.file.path); 
+        }
+
+        await user.save();
+
+        res.status(200).json({ message: 'User profile updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+exports.getProfilePicture = async (req, res) => {
+    try {
+        // console.log("Query Parameters:", req.query); 
+        const { email } = req.body;
+        // console.log("Email:", email);
+        const user = await RegisterUser.findOne({ email });
+        // console.log("User:", user);
+
+        if (!user || !user.profilePicture) {
+            return res.status(404).json({ message: 'User or profile picture not found' });
+        }
+
+        res.contentType(user.profilePicture.contentType);
+        res.send(user.profilePicture.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+

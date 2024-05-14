@@ -25,8 +25,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// mongoose.connect('mongodb://localhost:27017/Trolli', {
-mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Trolli', {
+mongoose.connect('mongodb://localhost:27017/Trolli', {
+// mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Trolli', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

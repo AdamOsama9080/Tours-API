@@ -29,34 +29,37 @@ exports.login = async (req, res) => {
         if (!(await bcrypt.compare(password, user.password))) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
-        if (user.role === 'user') {
-            if (!user.active) {
-                return res.status(401).json({ message: 'This email is not active' });
-            }
+        
+        if (user.role === 'user' && !user.active) {
+            return res.status(401).json({ message: 'This email is not active' });
         }
+
         if (user.role === 'organizer' && !user.active) {
             user.active = true;
             await user.save();
         }
 
-        const token = jwt.sign({
+        const userData = {
             id: user._id,
             email: user.email,
             firstName: user.firstName,
             lastName: user.lastName,
             role: user.role,
-            active: user.active
-        }, JWT_SECRET_KEY, { expiresIn: '7d' });
+            active: user.active,
+            gender: user.gender || null,
+            phone: user.phone || null,
+        };
+
+        const token = jwt.sign(userData, JWT_SECRET_KEY, { expiresIn: '7d' });
 
         res.status(200).json({
-            token: token
+            token: token,
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
     }
 };
-
 
 exports.forgetPassword = async (req, res) => {
     try {

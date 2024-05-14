@@ -1,27 +1,31 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema({
-    user:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true},
-    tour:{type:mongoose.Schema.Types.ObjectId,ref:'Tour',required:true},
-    numOfPeople:{
-        type:Number,
-        required:true,
-        max:[5, 'Only five tickets are allowed to book']
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    tour: { type: mongoose.Schema.Types.ObjectId, ref: 'Tour', required: true },
+    numOfPeople: {
+        type: Number,
+        required: true,
+        max: [5, 'Only five tickets are allowed to book']
     },
-    dateBooking:{
-        type:Date,
-        default:Date.now
+    dateBooking: {
+        type: Date,
+        default: Date.now
     },
-    isCanceld:{
-        type:Boolean,
-        default:false 
+    isCanceld: {
+        type: Boolean,
+        default: false
     },
-    isFavorite:{
-        type:Boolean,
-        default:false 
+    isFavorite: {
+        type: Boolean,
+        default: false
     },
-
-})
+    tripCode: {
+        type: Number,
+        required: true,
+        unique: true
+    }
+});
 
 const Booking = mongoose.model('Booking', bookingSchema);
 

@@ -4,7 +4,7 @@ const Tour = require('../Model/tourModel');
 
 exports.postReview = async (req, res) => {
   try {
-    const { userId, tourId, name, email, reviewTitle, reviewText, rating } = req.body;
+    const { userId, tourId, name, email, reviewTitle, reviewText, rating , guideRating, locationRating, cleanlinessRating, serviceRating, transportationRating } = req.body;
 
     const user = await User.findById(userId);
     const tour = await Tour.findById(tourId);
@@ -23,6 +23,12 @@ exports.postReview = async (req, res) => {
       reviewText,
       rating,
       reviewTitle, // You can add a default title or require it in the request
+      email , 
+      guideRating,
+      locationRating,
+      cleanlinessRating,
+      serviceRating,
+      transportationRating,
       reviewDate: new Date()
     });
 
@@ -30,9 +36,6 @@ exports.postReview = async (req, res) => {
 
     tour.reviews.push(newReview._id);
     await tour.save();
-
-    user.reviews.push(newReview._id);
-    await user.save();
 
     res.status(200).json({ message: 'Review submitted successfully', reviewId: newReview._id });
   } catch (error) {
@@ -95,3 +98,72 @@ exports.getReviewDetailsByPostId = async (req, res) => {
   }
 };
 
+exports.updateReview = async (req, res) => {
+  try {
+    const {userId,reviewId,name,email,reviewText,rating,reviewTitle,reviewDate,guideRating,locationRating,cleanlinessRating,serviceRating,transportationRating} = req.body;
+
+    if (!userId || !reviewId) {
+      return res.status(400).json({ message: 'Both userId and reviewId are required' });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+
+    review.name = name || review.name;
+    review.email = email || review.email;
+    review.reviewText = reviewText || review.reviewText;
+    review.rating = rating || review.rating;
+    review.reviewTitle = reviewTitle || review.reviewTitle;
+    review.reviewDate = reviewDate || review.reviewDate;
+    review.guideRating = guideRating || review.guideRating;
+    review.locationRating = locationRating || review.locationRating;
+    review.cleanlinessRating = cleanlinessRating || review.cleanlinessRating;
+    review.serviceRating = serviceRating || review.serviceRating;
+    review.transportationRating = transportationRating || review.transportationRating;
+
+    await review.save();
+
+    res.status(200).json({ message: 'Review updated successfully', review });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.deleteReview = async (req, res) => {
+  try {
+    const { userId, reviewId } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const review = await Review.findById(reviewId);
+    if (!review) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+
+    if (review.userId.toString() !== userId) {
+      return res.status(403).json({ message: 'You are not authorized to delete this review' });
+    }
+
+    await Review.findByIdAndDelete(reviewId);
+
+    await Tour.findByIdAndUpdate(review.tourId, {
+      $pull: { reviews: reviewId }
+    });
+
+    res.status(200).json({ message: 'Review deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};

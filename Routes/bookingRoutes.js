@@ -1,10 +1,10 @@
-const { getAllBookingById, Booking, updateBooking } = require('../Controllers/bookingController')
+const { getAllBookingById, Booking, cancelBooking } = require('../Controllers/bookingController')
 
 const bookingRouters = require('express').Router()
 
-bookingRouters.get('/:userid',getAllBookingById)
-bookingRouters.put('/',updateBooking)
-bookingRouters.post('/',Booking)
+bookingRouters.get('/:userid', getAllBookingById)
+bookingRouters.put('/', cancelBooking)
+bookingRouters.post('/', Booking)
 
 
 
