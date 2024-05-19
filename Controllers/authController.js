@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
       user: 'khalilkapo15@gmail.com',
-      pass: 'zwxntcgqnqxuyedv'
+      pass: 'vhpvalolvducobya'
     },
     tls: {
       rejectUnauthorized: false 
@@ -60,6 +60,26 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+exports.getRoleOfUser = async (req, res) => {
+    try {
+        const { email } = req.body;
+        const user = await RegisterUser.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const userData = {
+            role: user.role,
+        }
+        const token = jwt.sign(userData, JWT_SECRET_KEY, { expiresIn: '7d' });
+        res.status(200).json({
+            token: token
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
 
 exports.forgetPassword = async (req, res) => {
     try {

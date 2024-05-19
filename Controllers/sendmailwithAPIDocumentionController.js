@@ -12,7 +12,7 @@ const sendEmail = async (req, res) => {
             service: 'Gmail',
             auth: {
                 user: 'khalilkapo15@gmail.com',
-                pass: 'zwxntcgqnqxuyedv'
+                pass: 'vhpvalolvducobya'
             },
             tls: {
                 rejectUnauthorized: false
