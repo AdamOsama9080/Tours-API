@@ -1,21 +1,9 @@
 const User = require('../Model/registerModel');
-const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
-
-const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-        user: 'khalilkapo15@gmail.com',
-        pass: 'vhpvalolvducobya'
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 exports.registerOrganizer = async (req, res) => {
     try {
-        const { firstName, lastName, email, birthdate } = req.body;
+        const { firstName, lastName, email, birthdate, password, active } = req.body;
 
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -33,8 +21,6 @@ exports.registerOrganizer = async (req, res) => {
             return res.status(400).json({ message: 'User must be at least 22 years old' });
         }
 
-        const password = generateRandomPassword();
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const user = new User({
@@ -42,42 +28,15 @@ exports.registerOrganizer = async (req, res) => {
             lastName,
             email,
             birthdate,
-            password: hashedPassword, 
-            role: 'organizer'
+            password: hashedPassword,
+            role: 'organizer',
+            active: active === 'Active' // Set active status from form input
         });
         await user.save();
-
-        await sendActivationEmail(email, password);
 
         res.status(201).send({ message: 'Organizer registered successfully' });
     } catch (error) {
         console.error('Error registering organizer:', error);
         res.status(500).send({ message: error.message });
-    }
-};
-
-function generateRandomPassword() {
-    const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let password = '';
-    for (let i = 0; i < 10; i++) {
-        const randomIndex = Math.floor(Math.random() * chars.length);
-        password += chars[randomIndex];
-    }
-    return password;
-}
-
-async function sendActivationEmail(email, password) {
-    try {
-        const mailOptions = {
-            from: 'khalilkapo15@gmail.com',
-            to: email,
-            subject: 'Your account details',
-            text: `Your account has been successfully registered.\n\nYour randomly generated password: ${password}\n\nPlease use this password to login to your account.`
-        };
-
-        await transporter.sendMail(mailOptions);
-    } catch (error) {
-        console.error('Error sending activation email:', error);
-        throw new Error('Failed to send activation email');
     }
 };

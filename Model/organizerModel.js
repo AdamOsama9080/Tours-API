@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
 
 const organizerSchema = new Schema({
     firstName: { type: String, required: true, minlength: 3 },
@@ -9,7 +10,7 @@ const organizerSchema = new Schema({
         required: true,
         unique: true,
         validate: {
-            validator: function(v) {
+            validator: function (v) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
             },
             message: props => `${props.value} is not a valid email address!`
