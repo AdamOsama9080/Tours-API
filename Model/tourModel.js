@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const tourSchema = new mongoose.Schema({
-  // existing fields
   reviews: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Review'

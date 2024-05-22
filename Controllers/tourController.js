@@ -3,6 +3,44 @@ const Tour = require('../Model/tourModel');
 const nodemailer = require('nodemailer');
 const User = require('../Model/registerModel');
 const cron = require('node-cron');
+const Subscription = require('../Model/subscribeModel');
+
+
+async function sendDiscountEmailToUsers(emails, discountPercentage, discountStartDate, discountEndDate) {
+    try {
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: 'khalilkapo15@gmail.com',
+                pass: 'vhpvalolvducobya'
+            },
+            tls: {
+                rejectUnauthorized: false 
+            }
+        });
+
+        const mailOptions = {
+            from: 'khalilkapo15@gmail.com', 
+            to: emails.join(','), // Join emails into a single string
+            subject: 'New Tour Discount Available!',
+            text: `Dear traveler,
+
+                    We are excited to inform you about a new discount on our tours! Enjoy a ${discountPercentage}% discount from ${new Date(discountStartDate).toLocaleDateString()} to ${new Date(discountEndDate).toLocaleDateString()}.
+
+                    Visit our website to book your discounted tour now!
+
+                    Best regards,
+                    The Tour Management Team`
+                };
+
+        await transporter.sendMail(mailOptions);
+        console.log('Emails sent successfully');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        throw new Error('Failed to send email');
+    }
+}
+
 
 
 async function sendEmailToUsers(emails, tourTitle, tourLocation) {
@@ -19,7 +57,7 @@ async function sendEmailToUsers(emails, tourTitle, tourLocation) {
         });
 
         const mailOptions = {
-            from: 'your_email@gmail.com', // Update with your email
+            from: 'khalilkapo15@gmail.com', 
             to: emails,
             subject: 'Changes in Tour Details',
             text: `Dear traveler,\n\nThe tour "${tourTitle}" in ${tourLocation} has been updated. Please visit our site again to view the changes.\n\nBest regards,\nThe Tour Management Team`
@@ -47,12 +85,12 @@ module.exports = {
         try {
             const { location } = req.body;
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // Set today's time to the beginning of the day
+            today.setHours(0, 0, 0, 0); 
     
             const relatedTours = await Tour.find({
                 location: location,
-                emptyPlaces: { $ne: 0 }, // Ensure empty places are not 0
-                startDate: { $gt: today } // Ensure start date is after today's date
+                emptyPlaces: { $ne: 0 }, 
+                startDate: { $gt: today } 
             });
     
             if (relatedTours.length === 0) {
@@ -105,17 +143,12 @@ module.exports = {
             }
     
             const updatedTour = await Tour.findByIdAndUpdate(id, updateFields, { new: true });
-    
-            // Get user IDs from touristReservations
-            // const reservations = await TouristReservation.find({ tourId: id });
-            // const userIds = reservations.map(reservation => reservation.userId);
+
             const userIds =  tour.touristReservations.map(reservation => reservation.userId);
     
-            // Get emails of users from User collection
             const users = await User.find({ _id: { $in: userIds } });
             const userEmails = users.map(user => user.email);
     
-            // Send email notification to users
             await sendEmailToUsers(userEmails, updatedTour.title, updatedTour.location);
     
             res.status(200).json({
@@ -187,40 +220,38 @@ module.exports = {
         }
     },
 
-    // updateTour:async (req,res)=>{
-    //     // let tour = await Tour.findByIdAndUpdate(req.body.tour)
-
-    // }
-
     createDiscount: async (req, res) => {
         try {
             const { location, discountPercentage, discountStartDate, discountEndDate } = req.body;
-    
+
             if (!location || !discountPercentage || !discountStartDate || !discountEndDate) {
                 return res.status(400).json({ success: false, message: 'All fields are required!' });
             }
-    
+
             const filter = location === 'All Tour' ? {} : { location: location };
             const update = {
                 discountPercentage: discountPercentage,
                 discountStartDate: new Date(discountStartDate),
                 discountEndDate: new Date(discountEndDate)
             };
-    
+
             const result = await Tour.updateMany(filter, update);
             console.log('Update Result:', result);
-    
-            // Calculate the timeout duration in milliseconds
+
             const discountEndDateObj = new Date(discountEndDate);
             const timeoutDuration = discountEndDateObj.getTime() - Date.now();
-    
-            // Schedule the discount reset using setTimeout
+
             setTimeout(async () => {
                 const resetResult = await Tour.updateMany(filter, { discountPercentage: 0, discountStartDate: null, discountEndDate: null });
                 console.log('Reset Result:', resetResult);
             }, timeoutDuration);
-    
-            res.status(200).json({ success: true, message: 'Discount added successfully!' });
+
+            const users = await User.find({});
+            const userEmails = users.map(user => user.email);
+
+            await sendDiscountEmailToUsers(userEmails, discountPercentage, discountStartDate, discountEndDate);
+
+            res.status(200).json({ success: true, message: 'Discount added successfully and emails sent!' });
         } catch (error) {
             console.error('Error:', error);
             res.status(500).json({ success: false, message: error.message });
