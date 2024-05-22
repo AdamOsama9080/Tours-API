@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const tourSchema = new mongoose.Schema({
+  // existing fields
   reviews: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Review'
@@ -53,18 +54,15 @@ const tourSchema = new mongoose.Schema({
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      // required: true
     },
     numberOfTravelers: {
       type: Number,
-      // required: true,
       default: 0
     }
   }],
   totalTravelers: {
     type: Number,
     default: 0,
-    // required: true
   },
   emptyPlaces: {
     type: Number,
@@ -76,10 +74,15 @@ const tourSchema = new mongoose.Schema({
   excluded: [String],
   program: [String],
   latitude: Number,
-  longitude: Number
+  longitude: Number,
+  discountPercentage: {
+    type: Number,
+    default: 0
+  },
+  discountStartDate: Date,
+  discountEndDate: Date
 });
 
 const Tour = mongoose.model('Tour', tourSchema);
 
 module.exports = Tour;
-

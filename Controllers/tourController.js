@@ -2,6 +2,7 @@ const { model } = require('mongoose');
 const Tour = require('../Model/tourModel');
 const nodemailer = require('nodemailer');
 const User = require('../Model/registerModel');
+const cron = require('node-cron');
 
 
 async function sendEmailToUsers(emails, tourTitle, tourLocation) {
@@ -190,4 +191,39 @@ module.exports = {
     //     // let tour = await Tour.findByIdAndUpdate(req.body.tour)
 
     // }
+
+    createDiscount: async (req, res) => {
+        try {
+            const { location, discountPercentage, discountStartDate, discountEndDate } = req.body;
+    
+            if (!location || !discountPercentage || !discountStartDate || !discountEndDate) {
+                return res.status(400).json({ success: false, message: 'All fields are required!' });
+            }
+    
+            const filter = location === 'All Tour' ? {} : { location: location };
+            const update = {
+                discountPercentage: discountPercentage,
+                discountStartDate: new Date(discountStartDate),
+                discountEndDate: new Date(discountEndDate)
+            };
+    
+            const result = await Tour.updateMany(filter, update);
+            console.log('Update Result:', result);
+    
+            // Calculate the timeout duration in milliseconds
+            const discountEndDateObj = new Date(discountEndDate);
+            const timeoutDuration = discountEndDateObj.getTime() - Date.now();
+    
+            // Schedule the discount reset using setTimeout
+            setTimeout(async () => {
+                const resetResult = await Tour.updateMany(filter, { discountPercentage: 0, discountStartDate: null, discountEndDate: null });
+                console.log('Reset Result:', resetResult);
+            }, timeoutDuration);
+    
+            res.status(200).json({ success: true, message: 'Discount added successfully!' });
+        } catch (error) {
+            console.error('Error:', error);
+            res.status(500).json({ success: false, message: error.message });
+        }
+    }
 };

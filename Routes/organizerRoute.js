@@ -7,5 +7,9 @@ router.post('/register', organizerController.registerOrganizer);
 // router.post('/update-password', organizerController.updatePassword);
 // router.post('/activate-organizer', organizerController.activateOrganizer);
 
+router.get('/organizers', organizerController.getAllOrganizers);
+
+router.patch('/organizers/toggle-activation/:id', organizerController.toggleActivation);
+
 
 module.exports = router;
