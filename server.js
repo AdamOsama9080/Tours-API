@@ -14,6 +14,7 @@ const bookingRouters = require('./Routes/bookingRoutes');
 const favouritRouters = require('./Routes/favoriteRoutes');
 const subscribeRoutes = require('./Routes/subscribeRoute');
 const sendEmail = require('./Routes/sendmailwithAPIDocumentionRouter');
+const customService = require('./Routes/CustomServiceRoutes')
 
 //add comment
 
@@ -41,6 +42,7 @@ app.use('/booking',bookingRouters)
 app.use("/favourits", favouritRouters);
 app.use('/send', subscribeRoutes);
 app.use('/sendmail', sendEmail);
+app.use('/customservice', customService);
 // Start server
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {
