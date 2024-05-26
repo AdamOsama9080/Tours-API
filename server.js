@@ -32,8 +32,8 @@ app.use(bodyParser.json());
 //   useUnifiedTopology: true,
 // });
 
-mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
-// mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
+// mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
+mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
 useNewUrlParser: true,
   useUnifiedTopology: true,
 });
