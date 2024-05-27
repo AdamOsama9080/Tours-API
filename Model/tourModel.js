@@ -79,7 +79,15 @@ const tourSchema = new mongoose.Schema({
     default: 0
   },
   discountStartDate: Date,
-  discountEndDate: Date
+  discountEndDate: Date,
+  points: {
+    type: Number,
+    enum: [100, 150, 200],
+    default: function() {
+      const values = [100, 150, 200];
+      return values[Math.floor(Math.random() * values.length)];
+    }
+  }
 });
 
 const Tour = mongoose.model('Tour', tourSchema);

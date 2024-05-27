@@ -26,7 +26,6 @@
 
 // module.exports = User;
 
-
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -48,18 +47,13 @@ const userSchema = new mongoose.Schema({
     role: { type: String, required: true, minlength: 3 },
     otpCode: { type: String },
     active: { type: Boolean, default: false },
-    phone: { type: String, match: /^\d{11}$/ }, // Added phone field with regex validation
+    phone: { type: String, match: /^\d{11}$/ },
     gender: { type: String, enum: ['male', 'female', 'other'] },
     profilePicture: {
-        data: {
-            type: Buffer,
-            // required: true
-        },
-        contentType: {
-            type: String,
-            // required: true
-        }
-    }
+        data: { type: Buffer },
+        contentType: { type: String }
+    },
+    totalPoints: { type: Number, default: 0 }
 });
 
 const User = mongoose.model('User', userSchema);

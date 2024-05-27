@@ -15,6 +15,7 @@ const favouritRouters = require('./Routes/favoriteRoutes');
 const subscribeRoutes = require('./Routes/subscribeRoute');
 const sendEmail = require('./Routes/sendmailwithAPIDocumentionRouter');
 const customService = require('./Routes/CustomServiceRoutes')
+const couponOffer = require('./Routes/couponRoute')
 
 //add comment
 
@@ -26,15 +27,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// mongoose.connect('mongodb://localhost:27017/Trolli', {
-// mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@cluster0.sbganoa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Trolli', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-// mongoose.connect('mongodb+srv://adamosama9080:adamosama9080@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
-mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
-useNewUrlParser: true,
+mongoose.connect('mongodb://localhost:27017/Trolli', {
+// mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster', {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
@@ -49,6 +44,7 @@ app.use("/favourits", favouritRouters);
 app.use('/send', subscribeRoutes);
 app.use('/sendmail', sendEmail);
 app.use('/customservice', customService);
+app.use('/coupon', couponOffer);
 // Start server
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {

@@ -4,6 +4,7 @@ const Tour = require('../Model/tourModel');
 const User = require('../Model/registerModel');
 const Favourits = require('../Model/favouritsModel');
 const nodemailer = require('nodemailer');
+const Coupon = require('../Model/couponModel');
 
 async function generateUniqueTourCode() {
     const lastBooking = await Booking.findOne().sort({ tripCode: -1 }).limit(1);
@@ -72,18 +73,17 @@ module.exports = {
                 return res.status(400).json({ message: "You can book up to a maximum of 5 travelers" });
             }
 
-            const existingBooking = await Booking.findOne({ user: req.body.user, tour: req.body.tour ,isCanceld:false});
+            const existingBooking = await Booking.findOne({ user: req.body.user, tour: req.body.tour, isCanceld: false });
             if (existingBooking) {
                 return res.status(400).json({ message: "You have already booked for this tour. You can only update your booking." });
             }
 
             const tour = await Tour.findById(req.body.tour);
-            if (tour.emptyPlaces < totalTravelers && tour.limitNumberOfTravelers > tour.totalTravelers) {
+            if (tour.emptyPlaces < totalTravelers) {
                 return res.status(400).json({ message: "Not enough available spots for booking" });
             }
 
             const tourCode = await generateUniqueTourCode();
-
             const booking = new Booking({
                 ...req.body,
                 tripCode: tourCode
@@ -96,32 +96,48 @@ module.exports = {
             await tour.save();
 
             const user = await User.findById(req.body.user);
-            const travelerNames = req.body.travelers.map(traveler => ` - ${traveler.firstName} ${traveler.lastName}`).join('\n');
-            const transporter = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: {
-                    user: 'khalilkapo15@gmail.com',
-                    pass: 'vhpvalolvducobya'
-                },
-                tls: {
-                    rejectUnauthorized: false
-                }
-            });
+            const pointsToAdd = totalTravelers * 10; // Assume 10 points per traveler
+            user.totalPoints += pointsToAdd;
 
-            const mailOptions = {
-                from: 'khalilkapo15@gmail.com',
-                to: user.email,
-                subject: 'Booking Confirmation',
-                text: `Your booking for tour ${tourCode} is confirmed.\n\nTrip details: ${tour.description}.\n\nTravelers:\n${travelerNames} \n\nTotal price: ${totalTravelers * tour.price}€ and you can cancel it before ${tour.startDate} if you want .\n\nIf you have any questions, please contact us at 0uS1I@example.com`
-            };
+            if (user.totalPoints >= 600) {
+                const discount = getRandomDiscount();
+                const couponCode = `OOFTROL-${Math.random().toString(36).substring(2, 15).toUpperCase()}`;
 
-            transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log('Email sent: ' + info.response);
-                }
-            });
+                const coupon = new Coupon({
+                    code: couponCode,
+                    discount,
+                    email: user.email
+                });
+                await coupon.save();
+
+                const transporter = nodemailer.createTransport({
+                    service: 'Gmail',
+                    auth: {
+                        user: 'your-email@gmail.com',
+                        pass: 'your-email-password'
+                    },
+                    tls: {
+                        rejectUnauthorized: false
+                    }
+                });
+
+                const mailOptions = {
+                    from: 'your-email@gmail.com',
+                    to: user.email,
+                    subject: 'Special Offer for You!',
+                    text: `Congratulations! You have earned a special discount for your next trip. Use the coupon code ${couponCode} to get ${discount}% off on your next booking.`
+                };
+
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+            }
+
+            await user.save();
 
             const response = {
                 bookingId: booking._id,
@@ -129,7 +145,8 @@ module.exports = {
                     userId: user._id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    email: user.email
+                    email: user.email,
+                    totalPoints: user.totalPoints
                 },
                 tour: {
                     title: tour.title,
