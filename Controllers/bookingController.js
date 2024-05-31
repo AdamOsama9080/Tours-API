@@ -15,6 +15,10 @@ async function generateUniqueTourCode() {
     return lastTourCode;
 }
 
+const getRandomDiscount = () => {
+    return Math.floor(Math.random() * 46) + 5;
+}
+
 
 module.exports = {
     getAllBookingById:async (req,res)=>{
@@ -96,10 +100,11 @@ module.exports = {
             await tour.save();
 
             const user = await User.findById(req.body.user);
-            const pointsToAdd = totalTravelers * 10; // Assume 10 points per traveler
+            const pointsToAdd = totalTravelers * tour.points; 
             user.totalPoints += pointsToAdd;
 
             if (user.totalPoints >= 600) {
+                user.totalPoints = 0;
                 const discount = getRandomDiscount();
                 const couponCode = `OOFTROL-${Math.random().toString(36).substring(2, 15).toUpperCase()}`;
 
@@ -108,13 +113,14 @@ module.exports = {
                     discount,
                     email: user.email
                 });
+                
                 await coupon.save();
 
                 const transporter = nodemailer.createTransport({
                     service: 'Gmail',
                     auth: {
-                        user: 'your-email@gmail.com',
-                        pass: 'your-email-password'
+                        user: 'khalilkapo15@gmail.com',
+                        pass: 'vhpvalolvducobya'
                     },
                     tls: {
                         rejectUnauthorized: false
@@ -122,7 +128,7 @@ module.exports = {
                 });
 
                 const mailOptions = {
-                    from: 'your-email@gmail.com',
+                    from: 'khalilkapo15@gmail.com',
                     to: user.email,
                     subject: 'Special Offer for You!',
                     text: `Congratulations! You have earned a special discount for your next trip. Use the coupon code ${couponCode} to get ${discount}% off on your next booking.`
