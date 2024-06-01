@@ -16,6 +16,7 @@ const subscribeRoutes = require('./Routes/subscribeRoute');
 const sendEmail = require('./Routes/sendmailwithAPIDocumentionRouter');
 const customService = require('./Routes/CustomServiceRoutes')
 const couponOffer = require('./Routes/couponRoute')
+const contactUs = require('./Routes/contactUsRoute');
 
 //add comment
 
@@ -45,6 +46,7 @@ app.use('/send', subscribeRoutes);
 app.use('/sendmail', sendEmail);
 app.use('/customservice', customService);
 app.use('/coupon', couponOffer);
+app.use('/contact', contactUs);
 // Start server
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => {
