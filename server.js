@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // mongoose.connect('mongodb://localhost:27017/Trolli', {
-mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster/', {
+mongoose.connect('mongodb+srv://adamosama9080:LwiTF7hNYOvwMRyF@finalcluster.hqiaycn.mongodb.net/?retryWrites=true&w=majority&appName=FinalCluster/Trolli', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
